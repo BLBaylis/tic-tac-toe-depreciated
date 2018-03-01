@@ -1,0 +1,158 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* End of CSS Reset*/
+
+body, html {
+	height : 100%;
+}
+
+.heading-wrapper {
+	display : flex;
+	flex-direction : column;
+	justify-content: center;
+ 	height : 10%;
+ 	text-align : center;
+ 	font-size : 25px;
+ 	background-color : steelblue;
+	color : #fff;
+}
+
+.non-heading-wrapper {
+	display : flex;
+  	flex-flow : row nowrap;
+  	align-items : center;
+ 	height : 90%;
+  	width : 100%;
+  	background-color : steelblue;
+	color : #fff;
+}
+
+.icon-select-outer {
+  	display : flex;
+  	flex-flow : row nowrap;
+ 	height : 95%;
+ 	width : 95%;
+ 	margin : 0 17px 17px;
+ 	background-color: #fff;
+ 	color : black;
+}
+
+.icon-select-inner {
+ 	display : flex;
+	flex-flow : column nowrap;
+ 	justify-content : space-between;
+ 	margin : 0 17px 17px;
+ 	height : calc(100% - 17px);
+ 	width : 100%;
+}
+
+.select-text {
+	display : flex;
+	flex-direction : column;
+	justify-content: center;
+	text-align : center;
+	height : 10%;
+	font-size : 20px;
+}
+
+.icon-preview {
+	display: flex;
+	flex-flow : row nowrap;
+ 	height : 40%;
+ 	width : 100%;
+}
+
+.canvas, .palette {
+	height : 100%;
+	border : solid 1px;
+}
+
+.canvas {
+	width : 75%;
+}
+
+.palette {
+	width : 25%;
+
+}
+
+.icon-showcase {
+ 	display : flex;
+ 	flex-flow : row wrap;
+ 	justify-content : space-between;
+ 	align-items : flex-start;
+ 	min-height : 50px;
+ 	max-height : 100px;
+ 	width : 100%;
+ 	margin : 17px 0 0;
+}
+
+.icon {
+ 	margin : 0 2%;
+ 	flex : 1 1 20%;
+ 	min-width : 0;
+ 	max-width : 25%;
+ 	min-height : 0;
+ 	max-height : 100%;
+ 	object-fit : contain;
+}
+
+.left-edge {
+ 	margin-left : 0;
+}
+
+.right-edge {
+ 	margin-right : 0;
+}
+
+.confirm-btn {
+ 	height : 15%;
+ 	margin-top : 17px;
+}
