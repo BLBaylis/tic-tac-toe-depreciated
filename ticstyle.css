@@ -72,10 +72,42 @@ body, html {
 	color : #fff;
 }
 
+.flip-container {
+	height : 95%;
+	perspective: 1500px;
+}
+
+.flipper {
+	height : 100%;
+	transition: 0.6s;
+	transform-style: preserve-3d;
+}
+
+.go-flip {
+	transform: rotateY(180deg);
+}
+
+.user.icon-select-outer, .computer.icon-select-outer {
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.user.icon-select-outer {
+	z-index: 2;
+	transform: rotateY(0deg);
+
+}
+
+.computer.icon-select-outer {
+	transform: rotateY(180deg);
+}
+
 .icon-select-outer {
   	display : flex;
   	flex-flow : row nowrap;
- 	height : 95%;
+ 	height : 100%;
  	margin : 0 17px 17px;
  	background-color: #BAD4AA;
  	color : black;
@@ -101,6 +133,12 @@ body, html {
 	height : 10%;
 	font-size : 20px;
 	color: #F5FAF0;
+	font-weight : 300;
+}
+
+.highlight {
+	font-weight : 800;
+	color : #fff;
 }
 
 .icon-preview {
@@ -272,7 +310,7 @@ body, html {
  	margin-right : 0;
 }
 
-.confirm-btn {
+.confirm-btn, .back-btn {
  	height : 15%;
  	margin-top : 17px;
  	background-color : #7BE0AD;
@@ -281,6 +319,29 @@ body, html {
  	transition : all 300ms ease-in-out;
  	font-family : "BioRhyme";
  	color : #fff;
+}
+
+.computer-btn-div {
+	height : 15%;
+	margin-top : 17px;
+}
+
+.computer.confirm-btn {
+	margin-top : 0;
+	height : 100%;
+	width : 73%;
+}
+
+.back-btn {
+	margin-top : 0;
+	height : 100%;
+	width : 25%;
+	background-color : #DD614A;
+}
+
+.back-btn:hover, .back-btn:focus {
+	background-color : #ECA89C;
+	box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
 }
 
 .confirm-btn:hover, .confirm-btn:focus {
