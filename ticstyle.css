@@ -52,6 +52,7 @@ table {
 body, html {
 	height : 100%;
 	font-family : "BioRhyme";
+	overflow : hidden;
 }
 
 .heading-wrapper {
@@ -75,6 +76,9 @@ body, html {
 .flip-container {
 	height : 95%;
 	perspective: 1500px;
+	position : relative;
+	z-index : 5;
+	transition : transform 200ms linear;
 }
 
 .flipper {
@@ -108,12 +112,17 @@ body, html {
   	display : flex;
   	flex-flow : row nowrap;
  	height : 100%;
+ 	width : calc(100% - 34px);
  	margin : 0 17px 17px;
  	background-color: #BAD4AA;
  	color : black;
  	max-width : 600px;
  	max-height : 800px;
  	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}
+
+.remove-icon-select{
+	transform : translate(-100%);
 }
 
 .icon-select-inner {
@@ -163,7 +172,6 @@ body, html {
 	width : 100%;
 	margin : 0 auto;
 	border : none;
-	background-image : url("icons/Circle/circle black.png");
 	background-size : 100% 100%;
 }
 
@@ -277,12 +285,12 @@ body, html {
  	justify-content : space-between;
  	align-items : flex-start;
  	min-height : 50px;
- 	max-height : 150px;
+ 	max-height : 125px;
  	width : 100%;
  	margin : 17px 0 0;
 }
 
-.icon {
+/*.icon {
  	margin : 0 2%;
  	flex : 1 1 20%;
  	min-width : 0;
@@ -292,14 +300,78 @@ body, html {
  	object-fit : contain;
  	cursor : pointer;
  	background-color : #fff;
- 	border : solid 1px #000;
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}*/
+
+.icon {
+	position : relative;
+	margin : 0 2%;
+ 	flex : 1 1 20%;
+ 	min-width : 0;
+ 	max-width : 25%;
+ 	min-height : 0;
+ 	height : calc(55.5px + (68.5 * (100vw - 320px) / 315));
+ 	max-height : 100%;
+ 	object-fit : contain;
+ 	cursor : pointer;
+ 	background-image : #fff;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    background-size : 100% 100%;
 }
 
 .icon:hover {
 	border-color : #BAD4AA;
 	box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
+}
+
+.null-icon {
+	pointer-events : none;
+}
+
+.null-icon::after {
+	content : "";
+	display : block;
+	height : 100%;
+	width : 100%;
+	background-color : red;
+	position : absolute;
+	top : 0;
+	left : 0;
+	opacity : 0.3;
+}
+
+.circle {
+	background-image : url("icons/circle/circle black.png");
+}
+
+.smiley {
+	background-image : url("icons/smiley/smiley yellow.png");
+}
+
+.wheel {
+	background-image : url("icons/wheel/wheel black.png");
+}
+
+.button {
+	background-image : url("icons/button/button black.png");
+}
+
+.cross {
+	background-image : url("icons/cross/cross black.png");
+}
+
+.swords {
+	background-image : url("icons/swords/swords brown.png");
+}
+
+.candy-cane {
+	background-image : url("icons/candy-cane/candy-cane light-red.png");
+}
+
+.pencils {
+	background-image : url("icons/pencils/pencils gold.png");
 }
 
 .left-edge {
@@ -319,6 +391,11 @@ body, html {
  	transition : all 300ms ease-in-out;
  	font-family : "BioRhyme";
  	color : #fff;
+ 	cursor : "pointer";
+}
+
+.confirm-btn {
+	cursor : not-allowed;
 }
 
 .computer-btn-div {
@@ -344,9 +421,112 @@ body, html {
 	box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
 }
 
-.confirm-btn:hover, .confirm-btn:focus {
+.confirm-btn:hover, .confirm-btn:focus, .rematch-btn:hover, .remtach-btn:focus {
 	background-color : #93E5BB;
 	box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
+}
+
+.game-wrapper {
+	display : flex;
+	flex-flow : column nowrap;
+	justify-content : center;
+	align-items : center;
+	height : 100%;
+	width : 100%;
+	position : absolute;
+	top : 0;
+	left : 0;
+}
+
+.icon-select-btn-div {
+	height: 50px;
+	width : 80%;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content : space-between;
+	align-items : center;
+	margin : 20px 0;
+}
+
+.open-player-icon-select-btn, .open-comp-icon-select-btn{
+	height : 50px;
+	width  : 50px;
+	background-size : 100%, 100%;
+ 	cursor : pointer;
+ 	background-color : #fff;
+ 	border : none;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}
+
+.open-player-icon-select-btn:hover, .open-comp-icon-select-btn:hover {
+	box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
+}
+
+.vs {
+	font-size : 45px;
+}
+
+.game-outer {
+	display : flex;
+	flex-flow : row wrap;
+	border  : none;
+	width : 80%;
+	height : 53.55%;
+}
+
+.valign {
+	line-height : 50px;
+	vertical-align : middle;
+}
+
+.rematch-btn {
+ 	height : 50px;
+ 	width : 80%;
+ 	margin-bottom : 20px;
+ 	background-color : #7BE0AD;
+ 	border : none;
+ 	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+ 	transition : all 300ms ease-in-out;
+ 	font-family : "BioRhyme";
+ 	color : #fff;
+ }
+
+.draw-counter {
+	display : flex;
+	flex-flow : row nowrap;
+	justify-content : center;
+	align-items : center;
+	background-color : steelblue;
+	color : #fff;
+	height : 15%;
+	font-size : 20px;
+}
+
+.inner-square {
+	border :none;
+	margin : 2px;
+	background-color : #fff;
+	flex : 1 1 31%;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}
+
+.inner-square:hover {
+	background-color : #BAD4AA;
+}
+
+.user-square {
+	background-size : 100% 100%;
+	pointer-events: none;
+}
+
+.computer-square {
+	pointer-events: none;
+	background-size : 100% 100%;
+}
+
+.selected {
+	pointer-events: none;
 }
 
 @media (min-aspect-ratio : 360/640) {
@@ -363,6 +543,13 @@ body, html {
 		width : 80%;
 	}
 	
+}
+
+@media (min-width : 635px) {
+
+	.icon {
+		height : 125px;
+	}
 }
 
 @media (min-width : 768px) and (min-height : 1024px) {

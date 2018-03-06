@@ -5,7 +5,7 @@
 	<link href="https://fonts.googleapis.com/css?family=BioRhyme" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="ticstyle.css">
 	<!--<script src="https://use.fontawesome.com/dee45a8958.js" > </script>-->
-	<script type="text/javascript" src = "iconscript.js"></script>
+	<script src = "iconscript.js"></script>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -49,18 +49,26 @@
               </div>
             </div>
             <div class = "user icon-showcase">
-              <img class = "user icon circle left-edge " src = "icons/circle/circle black.png">
+              <!--<img class = "user icon circle left-edge " src = "icons/circle/circle black.png">
               <img class = "user icon smiley" src = "icons/smiley/smiley yellow.png">
               <img class = "user icon wheel" src = "icons/wheel/wheel black.png">
-              <img class = "user icon button right-edge" src = "icons/button/button white.png">
+              <img class = "user icon button right-edge" src = "icons/button/button white.png">-->
+              <div class = "user icon circle nought left-edge"></div>
+              <div class = "user icon smiley nought"></div>
+              <div class = "user icon wheel nought"></div>
+              <div class = "user icon button nought right-edge"></div>
             </div>
             <div class = "user icon-showcase">
-              <img class = "user icon cross left-edge" src = "icons/cross/cross black.png">
+              <!--<img class = "user icon cross left-edge" src = "icons/cross/cross black.png">
               <img class = "user icon swords" src = "icons/swords/swords brown.png">
               <img class = "user icon candy-cane" src = "icons/candy-cane/candy-cane light-red.png">
-              <img class = "user icon pencils right-edge" src = "icons/pencils/pencils gold.png">
+              <img class = "user icon pencils right-edge" src = "icons/pencils/pencils gold.png">-->
+              <div class = "user icon cross not-nought left-edge"></div>
+              <div class = "user icon swords not-nought"></div>
+              <div class = "user icon candy-cane not-nought"></div>
+              <div class = "user icon pencils not-nought right-edge"></div>
             </div>
-            <button class = "user confirm-btn">CONFIRM USER ICON</button>
+            <button class = "user confirm-btn" autocomplete = "off" disabled = "">CONFIRM USER ICON</button>
           </div>
         </div>
         <div class = "computer icon-select-outer">
@@ -96,23 +104,50 @@
               </div>
             </div>
             <div class = "computer icon-showcase">
-              <img class = "computer icon circle left-edge " src = "icons/circle/circle black.png">
-              <img class = "computer icon smiley" src = "icons/smiley/smiley yellow.png">
-              <img class = "computer icon wheel" src = "icons/wheel/wheel black.png">
-              <img class = "computer icon button right-edge" src = "icons/button/button white.png">
+              <!--<img class = "computer icon nought circle left-edge " src = "icons/circle/circle black.png">
+              <img class = "computer icon nought smiley" src = "icons/smiley/smiley yellow.png">
+              <img class = "computer icon nought wheel" src = "icons/wheel/wheel black.png">
+              <img class = "computer icon nought button right-edge" src = "icons/button/button white.png">-->
+              <div class = "computer icon circle nought left-edge null-icon"></div>
+              <div class = "computer icon smiley nought null-icon"></div>
+              <div class = "computer icon wheel nought null-icon"></div>
+              <div class = "computer icon button nought right-edge null-icon"></div>
             </div>
             <div class = "computer icon-showcase">
-              <img class = "computer icon cross left-edge" src = "icons/cross/cross black.png">
-              <img class = "computer icon swords" src = "icons/swords/swords brown.png">
-              <img class = "computer icon candy-cane" src = "icons/candy-cane/candy-cane light-red.png">
-              <img class = "computer icon pencils right-edge" src = "icons/pencils/pencils gold.png">
+              <!--<img class = "computer icon non-nought cross left-edge" src = "icons/cross/cross black.png">
+              <img class = "computer icon non-nought swords" src = "icons/swords/swords brown.png">
+              <img class = "computer icon non-nought candy-cane" src = "icons/candy-cane/candy-cane light-red.png">
+              <img class = "computer icon non-nought pencils right-edge" src = "icons/pencils/pencils gold.png">-->
+              <div class = "computer icon cross not-nought left-edge"></div>
+              <div class = "computer icon swords not-nought"></div>
+              <div class = "computer icon candy-cane not-nought"></div>
+              <div class = "computer icon pencils not-nought right-edge"></div>
             </div>
             <div class = "computer-btn-div">
               <button class = "computer back-btn">BACK</button>
-              <button class = "computer confirm-btn">CONFIRM AI ICON</button>
+              <button class = "computer confirm-btn" autocomplete = "off" disabled = "">CONFIRM AI ICON</button>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    <div class = "game-wrapper">
+      <div class = "icon-select-btn-div">
+        <button class = "open-player-icon-select-btn"></button>
+        <span class = "highlight vs"> VS </span>
+        <button class = "open-comp-icon-select-btn"></button>
+      </div>
+      <button class = "rematch-btn">REMATCH</button>
+      <div class = "game-outer">
+        <div class = "inner-square 0"></div>
+        <div class = "inner-square 1"></div>
+        <div class = "inner-square 2"></div>
+        <div class = "inner-square 3"></div>
+        <div class = "inner-square 4"></div>
+        <div class = "inner-square 5"></div>
+        <div class = "inner-square 6"></div>
+        <div class = "inner-square 7"></div>
+        <div class = "inner-square 8"></div>
       </div>
     </div>
   </div>
