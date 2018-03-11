@@ -49,20 +49,12 @@
               </div>
             </div>
             <div class = "user icon-showcase">
-              <!--<img class = "user icon circle left-edge " src = "icons/circle/circle black.png">
-              <img class = "user icon smiley" src = "icons/smiley/smiley yellow.png">
-              <img class = "user icon wheel" src = "icons/wheel/wheel black.png">
-              <img class = "user icon button right-edge" src = "icons/button/button white.png">-->
               <div class = "user icon circle nought left-edge"></div>
               <div class = "user icon smiley nought"></div>
               <div class = "user icon wheel nought"></div>
               <div class = "user icon button nought right-edge"></div>
             </div>
             <div class = "user icon-showcase">
-              <!--<img class = "user icon cross left-edge" src = "icons/cross/cross black.png">
-              <img class = "user icon swords" src = "icons/swords/swords brown.png">
-              <img class = "user icon candy-cane" src = "icons/candy-cane/candy-cane light-red.png">
-              <img class = "user icon pencils right-edge" src = "icons/pencils/pencils gold.png">-->
               <div class = "user icon cross not-nought left-edge"></div>
               <div class = "user icon swords not-nought"></div>
               <div class = "user icon candy-cane not-nought"></div>
@@ -104,20 +96,12 @@
               </div>
             </div>
             <div class = "computer icon-showcase">
-              <!--<img class = "computer icon nought circle left-edge " src = "icons/circle/circle black.png">
-              <img class = "computer icon nought smiley" src = "icons/smiley/smiley yellow.png">
-              <img class = "computer icon nought wheel" src = "icons/wheel/wheel black.png">
-              <img class = "computer icon nought button right-edge" src = "icons/button/button white.png">-->
               <div class = "computer icon circle nought left-edge null-icon"></div>
               <div class = "computer icon smiley nought null-icon"></div>
               <div class = "computer icon wheel nought null-icon"></div>
               <div class = "computer icon button nought right-edge null-icon"></div>
             </div>
             <div class = "computer icon-showcase">
-              <!--<img class = "computer icon non-nought cross left-edge" src = "icons/cross/cross black.png">
-              <img class = "computer icon non-nought swords" src = "icons/swords/swords brown.png">
-              <img class = "computer icon non-nought candy-cane" src = "icons/candy-cane/candy-cane light-red.png">
-              <img class = "computer icon non-nought pencils right-edge" src = "icons/pencils/pencils gold.png">-->
               <div class = "computer icon cross not-nought left-edge"></div>
               <div class = "computer icon swords not-nought"></div>
               <div class = "computer icon candy-cane not-nought"></div>
@@ -131,14 +115,27 @@
         </div>
       </div>
     </div>
-    <div class = "game-wrapper">
+    <div class = "game-wrapper hidden">
       <div class = "icon-select-btn-div">
-        <button class = "open-player-icon-select-btn"></button>
+        <button class = "open-icon-select-btn"></button>
         <span class = "highlight vs"> VS </span>
-        <button class = "open-comp-icon-select-btn"></button>
+        <button class = "open-icon-select-btn"></button>
       </div>
-      <button class = "rematch-btn">REMATCH</button>
+      <div class = "game-control-div">
+       <button class = "rematch-btn">RESTART</button>
+       <button class = "swap-btn">SWAP</button>
+      </div>
       <div class = "game-outer">
+        <div class = "first-move-div">
+          <div class = "select-text first-move-text">
+            <h2>WOULD YOU LIKE TO GO FIRST?</h2>
+          </div>
+          <div class = "first-move-btn-div">
+              <button class = "first-move-btn">YES!</button>
+              <button class = "first-move-btn">NO!</button>
+            </div>
+        </div>
+        <div class = "end-game"></div>
         <div class = "inner-square 0"></div>
         <div class = "inner-square 1"></div>
         <div class = "inner-square 2"></div>

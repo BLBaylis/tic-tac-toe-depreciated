@@ -175,6 +175,17 @@ body, html {
 	background-size : 100% 100%;
 }
 
+.incompatible-icon {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align  :center;
+}
+
+.incompatible-icon::after {
+	content : "Sorry, your icon is unavailable in this colour!";
+}
+
 .palette {
 	height : 100%;
 	width : 25%;
@@ -290,20 +301,6 @@ body, html {
  	margin : 17px 0 0;
 }
 
-/*.icon {
- 	margin : 0 2%;
- 	flex : 1 1 20%;
- 	min-width : 0;
- 	max-width : 25%;
- 	min-height : 0;
- 	max-height : 100%;
- 	object-fit : contain;
- 	cursor : pointer;
- 	background-color : #fff;
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
-}*/
-
 .icon {
 	position : relative;
 	margin : 0 2%;
@@ -382,7 +379,7 @@ body, html {
  	margin-right : 0;
 }
 
-.confirm-btn, .back-btn {
+.confirm-btn, .back-btn, .first-move-btn {
  	height : 15%;
  	margin-top : 17px;
  	background-color : #7BE0AD;
@@ -391,7 +388,7 @@ body, html {
  	transition : all 300ms ease-in-out;
  	font-family : "BioRhyme";
  	color : #fff;
- 	cursor : "pointer";
+ 	cursor : pointer;
 }
 
 .confirm-btn {
@@ -413,15 +410,10 @@ body, html {
 	margin-top : 0;
 	height : 100%;
 	width : 25%;
-	background-color : #DD614A;
+	background-color : #F9AB55;
 }
 
-.back-btn:hover, .back-btn:focus {
-	background-color : #ECA89C;
-	box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
-}
-
-.confirm-btn:hover, .confirm-btn:focus, .rematch-btn:hover, .remtach-btn:focus {
+.confirm-btn:hover, .confirm-btn:focus, .rematch-btn:hover, .rematch-btn:focus, .first-move-btn:hover, .first-move-btn:focus {
 	background-color : #93E5BB;
 	box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
 }
@@ -448,7 +440,7 @@ body, html {
 	margin : 20px 0;
 }
 
-.open-player-icon-select-btn, .open-comp-icon-select-btn{
+.open-icon-select-btn {
 	height : 50px;
 	width  : 50px;
 	background-size : 100%, 100%;
@@ -459,7 +451,7 @@ body, html {
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
 }
 
-.open-player-icon-select-btn:hover, .open-comp-icon-select-btn:hover {
+.open-icon-select-btn:hover {
 	box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
 }
 
@@ -467,7 +459,12 @@ body, html {
 	font-size : 45px;
 }
 
+.hidden {
+	visibility : hidden;
+}
+
 .game-outer {
+	position : relative;
 	display : flex;
 	flex-flow : row wrap;
 	border  : none;
@@ -480,27 +477,36 @@ body, html {
 	vertical-align : middle;
 }
 
-.rematch-btn {
+.game-control-div {
+	width : 80%;
+	margin-bottom : 20px;
+}
+
+.rematch-btn, .swap-btn {
  	height : 50px;
- 	width : 80%;
- 	margin-bottom : 20px;
+ 	width : 67%;
  	background-color : #7BE0AD;
  	border : none;
  	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
  	transition : all 300ms ease-in-out;
  	font-family : "BioRhyme";
  	color : #fff;
+ 	cursor : pointer;
  }
 
-.draw-counter {
-	display : flex;
-	flex-flow : row nowrap;
-	justify-content : center;
-	align-items : center;
-	background-color : steelblue;
-	color : #fff;
-	height : 15%;
-	font-size : 20px;
+.swap-btn {
+	width : 31%;
+	background-color : #F9AB55;
+}
+
+.btn-flash {
+	animation : btnFlash 2s linear 0s 1 none;
+}
+
+.swap-btn:hover, .swap-btn:focus, .back-btn:hover, .back-btn:focus {
+	background-color : #FAC183;
+	box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
+	transition : all 300ms ease-in-out;
 }
 
 .inner-square {
@@ -509,6 +515,7 @@ body, html {
 	background-color : #fff;
 	flex : 1 1 31%;
 	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+	cursor: pointer;
 }
 
 .inner-square:hover {
@@ -527,6 +534,79 @@ body, html {
 
 .selected {
 	pointer-events: none;
+}
+
+.end-game, .first-move-div {
+	position : absolute;
+	top : 40%;
+	height : 20%;
+	left : 1%;
+	width : 98%;
+	border : none;
+	background-color : #7BE0AD;
+	flex-direction: column;
+	justify-content: center;
+	text-align  :center;
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+	font-size : 35px;
+	display : none;
+}
+
+.first-move-div {
+	top : 20%;
+	left : 10%;
+	display : block;
+	height : 60%;
+	width : 80%;
+	background-color : #F9AB55;
+	/*transition : transform 200ms linear;*/
+}
+
+.remove-first-move-div {
+	display : flex;
+	font-size : 13.3333px;
+	justify-content : center;
+	align-items : center;
+	background-color : #F9AB55;
+	animation : btnMerge 1s linear 0s 1 forwards;
+	animation-fill-mode: forwards;
+}
+
+.first-move-text {
+	margin-top : 10px;
+	height : 40%;
+}
+
+.first-move-btn-div {
+	height : calc(60% - 10px);
+	width : 80%;
+	margin : 0 auto;
+	display : flex;
+	flex-flow : row nowrap;
+	justify-content : space-around;
+	align-items: center;
+}
+
+.first-move-btn {
+	height : 60%;
+	width  : 40%;
+	margin-top : 0;
+}
+
+.computer-win, .draw, .user-win {
+	display : flex;
+}
+
+.user-win::after {
+	content : "PLAYER WIN!";
+}
+
+.draw::after {
+	content : "DRAW!";	
+}
+
+.computer-win::after {
+	content : "AI WIN!";
 }
 
 @media (min-aspect-ratio : 360/640) {
@@ -559,3 +639,64 @@ body, html {
 	}
 
 }
+
+@keyframes btnMerge {
+	
+	0% {
+
+	}
+
+	99.98% {
+		height : 50px;
+		width : 31%;
+		left : 69%;
+		top : -27.25%;
+		box-shadow : none;
+		background-color : #F9AB55;
+		z-index : 0;
+	}
+
+	100% {
+		height : 50px;
+		width : 31%;
+		left : 69%;
+		top : -27.25%;
+		box-shadow : none;
+		background-color: transparent;
+		z-index : -10;
+	}
+
+}
+
+@keyframes btnFlash {
+
+	0% {
+		background-color : #F9AB55;
+	}
+
+	50%{
+		background-color : #F9AB55;
+	}
+
+	60%{
+		background-color : #F9AB55;
+	}
+
+	70% {
+		background-color : #FAC183;
+	}
+
+	80% {
+		background-color : #F9AB55;
+	}
+
+	90% {
+		background-color : #FAC183;
+	}
+
+	100% {
+		background-color : #F9AB55;
+	}
+
+}
+
