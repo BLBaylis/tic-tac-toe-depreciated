@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
+	document.getElementsByClassName("swap-btn")[0].style.color = "#F9AB55";
 	document.getElementsByClassName("confirm-btn")[0].addEventListener("click", function(event){
 		console.log(event);
 		document.getElementsByClassName("flipper")[0].style.transition = "0.6s";
@@ -52,7 +53,10 @@ document.addEventListener("DOMContentLoaded", function() {
 		 = "url('icons/" + computerIcon.icon + "/" + computerIcon.icon + " " + computerIcon.colour + ".png')";
 		document.getElementsByClassName("first-move-div")[0].classList.add("remove-first-move-div");
 		document.getElementsByClassName("swap-btn")[0].classList.add("btn-flash");
-		document.getElementsByClassName("first-move-div")[0].innerHTML = "SWAP";
+		document.getElementsByClassName("first-move-div")[0].innerHTML = "";
+		setInterval(function(){
+			document.getElementsByClassName("swap-btn")[0].style.color = "#fff";
+		}, 1000);
 	});
 	document.getElementsByClassName("first-move-btn")[1].addEventListener("click", function() {
 		swap();
@@ -62,7 +66,10 @@ document.addEventListener("DOMContentLoaded", function() {
 		= "url('icons/" + computerIcon.icon + "/" + computerIcon.icon + " " + computerIcon.colour + ".png')";
 		document.getElementsByClassName("first-move-div")[0].classList.add("remove-first-move-div");
 		document.getElementsByClassName("swap-btn")[0].classList.add("btn-flash");
-		document.getElementsByClassName("first-move-div")[0].innerHTML = "SWAP";
+		document.getElementsByClassName("first-move-div")[0].innerHTML = "";
+		setInterval(function(){
+			document.getElementsByClassName("swap-btn")[0].style.color = "#fff";
+		}, 1000);
 	});
 	document.getElementsByClassName("back-btn")[0].addEventListener("click", flip);
 	for (var i = 0; i < document.getElementsByClassName("icon").length; i++){
