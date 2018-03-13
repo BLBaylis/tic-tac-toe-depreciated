@@ -57,6 +57,11 @@ document.addEventListener("DOMContentLoaded", function() {
 		setInterval(function(){
 			document.getElementsByClassName("swap-btn")[0].style.color = "#fff";
 		}, 1000);
+		for (var i = 0; i < document.getElementsByClassName("inner-square").length; i++){
+			document.getElementsByClassName("inner-square")[i].classList.remove("selected");
+		}
+		document.getElementsByClassName("rematch-btn")[0].classList.remove("selected");
+		document.getElementsByClassName("swap-btn")[0].classList.remove("selected");
 	});
 	document.getElementsByClassName("first-move-btn")[1].addEventListener("click", function() {
 		swap();
@@ -70,6 +75,11 @@ document.addEventListener("DOMContentLoaded", function() {
 		setInterval(function(){
 			document.getElementsByClassName("swap-btn")[0].style.color = "#fff";
 		}, 1000);
+		for (var i = 0; i < document.getElementsByClassName("inner-square").length; i++){
+			document.getElementsByClassName("inner-square")[i].classList.remove("selected");
+		}
+		document.getElementsByClassName("rematch-btn")[0].classList.remove("selected");
+		document.getElementsByClassName("swap-btn")[0].classList.remove("selected");
 	});
 	document.getElementsByClassName("back-btn")[0].addEventListener("click", flip);
 	for (var i = 0; i < document.getElementsByClassName("icon").length; i++){

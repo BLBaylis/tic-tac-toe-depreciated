@@ -59,18 +59,15 @@ h1 {
 	display : inline-block;
 	margin : 17px;
 	color : #889B7C;
-	font-size : 18px;
+	font-size : calc(17px + (15 * (100vh - 320px) / 880));
 }
 
-.heading-wrapper {
-	display : flex;
-	flex-direction : column;
-	justify-content: center;
- 	height : 10%;
- 	text-align : center;
- 	
- 	background-color : #EBF5DF;
-	
+h2 {
+	font-size : calc(17px + (15 * (100vh - 320px) / 880));
+}
+
+button {
+	font-size : calc(17px + (20 * (100vh - 320px) / 880));
 }
 
 .non-heading-wrapper {
@@ -665,6 +662,172 @@ h1 {
 
 	.icon-select-outer {
 		margin : 0 auto;
+	}
+
+}
+
+@media (orientation : landscape) {
+
+	.heading {
+		margin : 10px;
+		font-size : calc(17px + (20 * (100vh - 320px) / 880));
+	}
+
+	.flip-container {
+		height : calc(95% - 30px);
+	}
+
+
+	.icon-select-outer {
+		max-height : calc(320px + (280 * (100vw - 480px) / 320));
+		max-width : calc(480px + (320 * (100vh - 320px) / 315));
+		margin : 0 10px 10px;
+		width : calc(100% - 20px);
+	}
+
+	.user.icon-select-outer, .computer.icon-select-outer {
+		backface-visibility: hidden;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+	}
+
+	.user.icon-select-outer {
+		z-index: 2;
+		transform: rotateY(0deg) translate(calc(-50% - 10px), -50%);
+	}
+
+	.computer.icon-select-outer {
+		transform: rotateY(180deg) translate(calc(50% + 10px), -50%);
+	}
+
+	.icon-select-inner {
+		flex-flow : row wrap;
+		justify-content : center;
+		align-items : flex-start;
+		margin : 0 17px 0;
+		height : 100%;
+		align-content : stretch;
+	}
+
+	.select-text {
+		display : flex;
+		flex-direction : column;
+		justify-content: center;
+		text-align : center;
+		height : 7.5%;
+		width : 100%;
+		font-size : 20px;
+		color: #F5FAF0;
+		font-weight : 300;
+		align-self : center;
+}
+
+	.icon-preview {
+		width : 75%;
+		height : 70%;
+		margin : 0;
+	}
+
+	.icon-showcase {
+		min-width : 43px;
+ 		max-width : 10.09%;
+ 		height : 70%;
+ 		flex-flow : column nowrap;
+ 		min-height : initial;
+ 		max-height : initial;
+ 		margin : 0;
+ 		margin-left : 2%;
+ 		width : auto;
+ 		justify-content : space-between;
+	}
+
+	.computer-btn-div {
+		height : 10%;
+		margin-top : 0;
+		width : 100%;
+	}
+
+
+	.confirm-btn, .back-btn {
+ 		height : 10%;
+ 		margin : 0;
+ 		width  : 100%;
+ 	}
+
+ 	.computer.confirm-btn {
+		height : 100%;
+		width : 73%;
+	}
+
+	.back-btn {
+		margin-top : 0;
+		height : 100%;
+		width : 25%;
+		background-color : #F9AB55;
+	}
+
+	.icon {
+		flex : 1 1 20%;
+ 		min-height : 0;
+ 		max-height : 25%;
+ 		min-width : 0;
+ 		width : calc(43px + (39 * (100vh - 320px) / 330));
+ 		max-width : 100%;
+ 		margin : 2% 0;
+
+	}
+
+	.left-edge {
+		margin-top : 0;
+	}
+
+	.right-edge {
+		margin-bottom : 0;
+	}
+
+	.game-wrapper {
+		height : 92%;
+		top : 8%;
+		justify-content: space-evenly;
+	}
+
+	.icon-select-btn-div {
+		position : absolute;
+		top : calc(135px + (170 * (100vh - 320px)) / 315);
+		min-height : 0;
+		height: 66px;
+		width : 92.5%;
+		max-width : 92.5%;
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content : space-between;
+		align-items : center;
+	}
+
+	.open-icon-select-btn {
+		width : 66px;
+	}
+
+	.game-control-div {
+		width : 65vh;
+		max-width: 75vw;
+		height  : 12%;
+		margin : 15px 0;
+		display: flex;
+		flex-flow: row nowrap;
+	}
+
+	.game-outer {
+		height : 65vh;
+		max-height : 75vw;
+		width : 65vh;
+		max-width : 75vw;
+	}
+
+	.first-move-text {
+		height : 40%;
+		margin : 10px auto 0;
 	}
 
 }
