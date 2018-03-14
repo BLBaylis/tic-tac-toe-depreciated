@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		var confirmBtn = document.getElementsByClassName("confirm-btn");
 		document.getElementsByClassName("game-wrapper")[0].classList.remove("hidden");
 		document.getElementsByClassName("flip-container")[0].classList.add("remove-icon-select");
+		//document.getElementsByClassName("heading")[0].style.marginTop = "5vh";
 		computerIcon.updateIcon("computer-square");
 		if (gameObj.firstMove === "user"){
 			document.getElementsByClassName("open-icon-select-btn")[1].style.backgroundImage = 
