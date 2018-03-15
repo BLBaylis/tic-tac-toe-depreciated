@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function() {
 		var confirmBtn = document.getElementsByClassName("confirm-btn");
 		document.getElementsByClassName("game-wrapper")[0].classList.remove("hidden");
 		document.getElementsByClassName("flip-container")[0].classList.add("remove-icon-select");
-		//document.getElementsByClassName("heading")[0].style.marginTop = "5vh";
 		computerIcon.updateIcon("computer-square");
 		if (gameObj.firstMove === "user"){
 			document.getElementsByClassName("open-icon-select-btn")[1].style.backgroundImage = 
@@ -265,7 +264,6 @@ function restartGame() {
 		document.getElementsByClassName("end-game")[0].classList.remove(gameObj.outcome);
 	}
 	gameObj = {center : "", moves : 0, grid : [0, 1, 2, 3, 4, 5 , 6, 7, 8], outcome : "", firstMove : gameObj.firstMove};
-	console.log(gameObj.firstMove);
 	if (gameObj.firstMove === "computer" && gameObj.moves === 0){
 		chooseRandomMoveFromGivenArray("computer", gameObj.grid, false);
 		gameObj.moves++;
@@ -301,15 +299,15 @@ function userMove(event){
 	gridNumber = Number(eventTarget.classList[1]);
 	makeMove("user", gridNumber);
 	gameObj.moves++;
-	if (gameObj.moves === 9){
-		gameObj.outcome = "draw";
+	if (winChecker("user")){
 		for (i = 0; i < document.getElementsByClassName("inner-square").length; i++){
 			document.getElementsByClassName("inner-square")[i].classList.add("selected");
 		}
 		document.getElementsByClassName("end-game")[0].classList.add(gameObj.outcome);
 		return;
 	}
-	if (winChecker("user")){
+	if (gameObj.moves === 9){
+		gameObj.outcome = "draw";
 		for (i = 0; i < document.getElementsByClassName("inner-square").length; i++){
 			document.getElementsByClassName("inner-square")[i].classList.add("selected");
 		}
@@ -318,6 +316,13 @@ function userMove(event){
 	}
 	computerMove();
 	gameObj.moves++;
+	if (winChecker("computer")){
+		for (var i = 0; i < document.getElementsByClassName("inner-square").length; i++){
+			document.getElementsByClassName("inner-square")[i].classList.add("selected");
+		}
+		document.getElementsByClassName("end-game")[0].classList.add(gameObj.outcome);
+		return;
+	}
 	if (gameObj.moves === 9){
 		gameObj.outcome = "draw";
 		for (i = 0; i < document.getElementsByClassName("inner-square").length; i++){
@@ -325,12 +330,6 @@ function userMove(event){
 		}
 		document.getElementsByClassName("end-game")[0].classList.add(gameObj.outcome);
 		return;
-	}
-	if (winChecker("computer")){
-		for (var i = 0; i < document.getElementsByClassName("inner-square").length; i++){
-			document.getElementsByClassName("inner-square")[i].classList.add("selected");
-		}
-		document.getElementsByClassName("end-game")[0].classList.add(gameObj.outcome);
 	}
 }
 

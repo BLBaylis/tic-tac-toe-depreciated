@@ -53,6 +53,7 @@ body, html {
 	height : 100%;
 	font-family : "BioRhyme";
 	overflow : hidden;
+	background-color : #EBF5DF;
 }
 
 .heading {
@@ -92,6 +93,7 @@ button {
 	position : relative;
 	z-index : 5;
 	transition : transform 200ms linear;
+	overflow : hidden;
 }
 
 .flipper {
@@ -108,25 +110,28 @@ button {
 	backface-visibility: hidden;
 	position: absolute;
 	top: 0;
-	left: 50%;
+	left: 0;
 }
 
 .user.icon-select-wrapper {
 	z-index: 2;
-	transform: rotateY(0deg) translateX(calc(-50%));
+	transform: rotateY(0deg);
 
 }
 
 .computer.icon-select-wrapper {
-	transform: rotateY(180deg) translateX(calc(50%));
+	transform: rotateY(180deg);
 
 }
 
 .icon-select-wrapper {
+	display :flex;
+	flex-direction : column;
+	justify-content: center;
+	align-items: center;
  	height : 100%;
  	width : 100%;
  	background-color : #EBF5DF;
- 	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
 }
 
 .remove-icon-select{
@@ -144,6 +149,9 @@ button {
 	width : 90vw;
 	margin : 0 auto;
 	text-align: center;
+	max-width : 288px;
+	max-height : 480px;
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
 }
 
 .sub-heading {
@@ -180,7 +188,6 @@ button {
 
 .canvas-inner {
 	height : 100%;
-	/*max-width : 312px;*/
 	width : 100%;
 	margin : 0 auto;
 	border : none;
@@ -308,18 +315,14 @@ button {
 	grid-template-columns: repeat(4, 1fr);
 	grid-template-rows: 1fr 1fr;
 	grid-gap : calc(2vw * 0.95) 2%;
-	height : auto;
+	height : 30%;
 	width : 90%;
 }
 
 .icon {
- 	object-fit : contain;
-}
-
-.icon {
 	background-color : pink;
-	height : 19vw;
-	max-height : 15vh;
+	height : 100%;
+	max-height : 100%;
 	width : 100%;
 	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
@@ -405,6 +408,7 @@ button {
 
 .computer-btn-div {
 	height : 15%;
+	width  :90%;
 }
 
 .computer.confirm-btn {
@@ -437,8 +441,8 @@ button {
 }
 
 .icon-select-btn-div {
-	min-height : 12%;
-	height: 12%;
+	min-height : 11vh;
+	height: 11vh;
 	width : 80%;
 	max-width: 53.33vh;
 	display: flex;
@@ -595,6 +599,10 @@ button {
 }
 
 .first-move-text {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	margin-top : 10px;
 	height : 40%;
 }
@@ -631,72 +639,12 @@ button {
 	content : "AI WIN!";
 }
 
-@media (min-aspect-ratio : 360/640) {
-
-	.canvas-inner {
-		width : 100%;
-	}
-
-}
-
-@media (min-aspect-ratio : 2/3) {
-
-	.canvas-inner {
-		width : 80%;
-	}
-	
-}
-
-@media (min-aspect-ratio : 1/1) {
-
-	.canvas-inner {
-		width : 100%;
-	}
-
-}
-
-@media (min-aspect-ratio : 6 / 5) {
-
-	.canvas-inner {
-		width : 100%;
-	}
-
-}
-
-@media (min-aspect-ratio : 3/2) {
-	.canvas-inner {
-		width : 80%;
-	}
-}
-
-@media (min-aspect-ratio : 17/10) {
-	.canvas-inner {
-		width : 100%;
-	}
-}
-
-@media (min-width : 635px) {
-
-	.icon {
-		height : 125px;
-	}
-}
-
-@media (min-width : 768px) and (min-height : 1024px) {
-
-	.icon-select-outer {
-		margin : 0 auto;
-	}
-
-}
-
 @media (orientation : landscape) {
 
 	.sub-heading {
 		display : inline-block;
 		width: 100%;
 	}
-
 
 	.user.icon-select-wrapper, .computer.icon-select-wrapper {
 		backface-visibility: hidden;
@@ -707,18 +655,20 @@ button {
 
 	.user.icon-select-wrapper {
 		z-index: 2;
-		transform: rotateY(0deg) translate(calc(-50%), -50%);
+		transform: rotateY(0deg) translate(-50%, -50%);
 	}
 
 	.computer.icon-select-wrapper {
-		transform: rotateY(180deg) translate(calc(50%), -50%);
+		transform: rotateY(180deg) translate(50%, -50%);
 	}
 
 	.icon-select {
 		height: calc(100% - 2.5vh);
 		width : 95vw;
-		margin : 0 2.5% 2.5%;
+		margin-bottom : 2.5%;
 		flex-flow : row wrap;
+		max-width : 480px;
+		max-height : 288px;		
 	}
 
 	.icon-preview {
@@ -738,7 +688,7 @@ button {
 
 	.icon {
 		background-color : pink;
-		width  :50px;
+		width  : 90%;
 		height : 100%;
 		transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
@@ -795,7 +745,7 @@ button {
 		max-width : 92.5%;
 		display: flex;
 		flex-flow: row nowrap;
-		justify-content : space-between;
+		justify-content : space-around;
 		align-items : center;
 	}
 
@@ -825,6 +775,9 @@ button {
 }
 
 	.first-move-text {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		height : 40%;
 		margin : 10px auto 0;
 	}
@@ -838,6 +791,32 @@ button {
 
 }
 
+@media (min-width : 768px) and (min-height : 1024px) {
+
+	.icon-select {
+		max-height : 904px;
+		max-width : 681px;
+	}
+
+}
+
+@media (min-width : 1024px) and (min-height : 768px) {
+
+	.icon-select {
+		max-height : 681px;
+		max-width : 904px;
+	}
+
+}
+
+@media (min-width : 1366px) and (min-height : 1024px) {
+
+	.icon-select {
+		max-height : 904px;
+		max-width : 1200px;
+	}
+
+}
 
 @keyframes btnMerge {
 	
