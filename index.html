@@ -10,17 +10,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
- 	<div class = "outer-wrapper">
-    <div class = "heading-wrapper">
-      <h1 class = "heading">BRAD'S TIC TAC TOE GAME</h1>
-    </div>
+ 	  <h1 class = "heading">BRAD'S TIC TAC TOE GAME</h1>
    	<div class = "flip-container">
       <div class = "flipper">
-        <div class = "user icon-select-outer">
-          <div class = "user icon-select-inner">
-            <div class = "user select-text">
-              <h2>SELECT <span class = "highlight">YOUR</span> ICON</h2>
-            </div>
+        <div class = "user icon-select-wrapper">
+          <div class = "user icon-select">
+            <h2 class = "sub-heading">SELECT <span class = "highlight">AI</span> ICON</h2>
             <div class = "user icon-preview">
               <div class = "user canvas-outer">
                 <div class = "user canvas-inner user-canvas-inner"></div>    
@@ -53,8 +48,6 @@
               <div class = "user icon smiley nought"></div>
               <div class = "user icon wheel nought"></div>
               <div class = "user icon button nought right-edge"></div>
-            </div>
-            <div class = "user icon-showcase">
               <div class = "user icon cross not-nought left-edge"></div>
               <div class = "user icon swords not-nought"></div>
               <div class = "user icon candy-cane not-nought"></div>
@@ -63,11 +56,9 @@
             <button class = "user confirm-btn" autocomplete = "off" disabled = "">CONFIRM USER ICON</button>
           </div>
         </div>
-        <div class = "computer icon-select-outer">
-          <div class = "computer icon-select-inner">
-            <div class = "computer select-text">
-              <h2>SELECT <span class = "highlight">AI</span> ICON</h2>
-            </div>
+        <div class = "computer icon-select-wrapper">
+          <div class = "computer icon-select">
+            <h2 class = "sub-heading">SELECT <span class = "highlight">AI</span> ICON</h2>
             <div class = "computer icon-preview">
               <div class = "computer canvas-outer">
                 <div class = "computer canvas-inner computer-canvas-inner"></div>    
@@ -100,8 +91,6 @@
               <div class = "computer icon smiley nought null-icon"></div>
               <div class = "computer icon wheel nought null-icon"></div>
               <div class = "computer icon button nought right-edge null-icon"></div>
-            </div>
-            <div class = "computer icon-showcase">
               <div class = "computer icon cross not-nought left-edge"></div>
               <div class = "computer icon swords not-nought"></div>
               <div class = "computer icon candy-cane not-nought"></div>
@@ -128,7 +117,7 @@
       <div class = "game-outer">
         <div class = "first-move-div">
           <div class = "select-text first-move-text">
-            <h2>WOULD YOU LIKE TO GO FIRST?</h2>
+            <h3>WOULD YOU LIKE TO GO FIRST?</h3>
           </div>
           <div class = "first-move-btn-div">
               <button class = "first-move-btn">YES!</button>
@@ -147,6 +136,5 @@
         <div class = "inner-square 8 selected"></div>
       </div>
     </div>
-  </div>
 </body>
 </html>

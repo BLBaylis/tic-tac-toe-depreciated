@@ -55,17 +55,26 @@ body, html {
 	overflow : hidden;
 }
 
-h1 {
+.heading {
+	display : flex;
+	flex-direction : column;
+	justify-content : center;
+	height : 10%;
+	background-color : #EBF5DF;
+	text-align: center;
 	color : #889B7C;
-	font-size : calc(15px + (15 * (100vh - 320px) / 880));
 }
 
 h2 {
 	font-size : calc(17px + (10 * (100vh - 320px) / 880));
 }
 
+h3 {
+	font-size : calc(15px + (5 * (100vw - 320px) / 880));
+}
+
 button {
-	font-size : calc(15px + (0 * (100vw - 320px) / 880));
+	font-size : calc(15px + (5 * (100vw - 320px) / 880));
 }
 
 .outer-wrapper {
@@ -73,15 +82,8 @@ button {
 	text-align : center;
  	height : 100%;
   	width : 100%;
-  	background-color : #EBF5DF;
+	background-color : #EBF5DF;
 	color : #fff;
-}
-
-.heading-wrapper {
-	display : flex;
-	flex-flow : column nowrap;
-	justify-content : center;
-	height : 8%;
 }
 
 .flip-container {
@@ -93,7 +95,7 @@ button {
 }
 
 .flipper {
-	height : calc(100% - 17px);
+	height : 100%;
 	transition: 0.6s;
 	transform-style: preserve-3d;
 }
@@ -102,57 +104,51 @@ button {
 	transform: rotateY(180deg);
 }
 
-.user.icon-select-outer, .computer.icon-select-outer {
+.user.icon-select-wrapper, .computer.icon-select-wrapper {
 	backface-visibility: hidden;
 	position: absolute;
 	top: 0;
 	left: 50%;
 }
 
-.user.icon-select-outer {
+.user.icon-select-wrapper {
 	z-index: 2;
-	transform: rotateY(0deg) translateX(calc(-50% - 17px));
+	transform: rotateY(0deg) translateX(calc(-50%));
 
 }
 
-.computer.icon-select-outer {
-	transform: rotateY(180deg) translateX(calc(50% + 17px));
+.computer.icon-select-wrapper {
+	transform: rotateY(180deg) translateX(calc(50%));
 
 }
 
-.icon-select-outer {
-  	display : flex;
-  	flex-flow : row nowrap;
+.icon-select-wrapper {
  	height : 100%;
- 	width : calc(100% - 34px);
- 	margin : 0 17px 17px;
- 	background-color: #BAD4AA;
- 	color : black;
- 	max-width : 600px;
- 	max-height : 800px;
+ 	width : 100%;
+ 	background-color : #EBF5DF;
  	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
-
 }
 
 .remove-icon-select{
 	transform : translate(-100%);
 }
 
-.icon-select-inner {
- 	display : flex;
-	flex-flow : column nowrap;
- 	justify-content : space-between;
- 	margin : 0 17px 17px;
- 	height : calc(100% - 17px);
- 	width : 100%;
-}
-
-.select-text {
+.icon-select {
 	display : flex;
 	flex-direction : column;
-	justify-content: center;
-	text-align : center;
-	height : 10%;
+	justify-content: space-evenly;
+	align-items: center;
+	box-sizing: border-box;
+	background-color : #BAD4AA;
+	height : calc(100% - 5vw);
+	width : 90vw;
+	margin : 0 auto;
+	text-align: center;
+}
+
+.sub-heading {
+	display : inline;
+	text-align: center;
 	font-size : 20px;
 	color: #F5FAF0;
 	font-weight : 300;
@@ -167,7 +163,7 @@ button {
 	display: flex;
 	flex-flow : row nowrap;
  	height : 40%;
- 	width : 100%;
+ 	width : 90%;
  	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
  	display : flex;
  	flex-direction: row;
@@ -308,31 +304,28 @@ button {
 }
 
 .icon-showcase {
- 	display : flex;
- 	flex-flow : row wrap;
- 	justify-content : space-between;
- 	align-items : flex-start;
- 	min-height : 50px;
- 	max-height : 125px;
- 	width : 100%;
- 	margin : 17px 0 0;
+	display : grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: 1fr 1fr;
+	grid-gap : calc(2vw * 0.95) 2%;
+	height : auto;
+	width : 90%;
 }
 
 .icon {
-	position : relative;
-	margin : 0 2%;
- 	flex : 1 1 20%;
- 	min-width : 0;
- 	max-width : 25%;
- 	min-height : 0;
- 	height : calc(55.5px + (68.5 * (100vw - 320px) / 315));
- 	max-height : 100%;
  	object-fit : contain;
- 	cursor : pointer;
- 	background-image : #fff;
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.icon {
+	background-color : pink;
+	height : 19vw;
+	max-height : 15vh;
+	width : 100%;
+	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
     background-size : 100% 100%;
+    cursor : pointer;
+ 	background-image : #fff;
 }
 
 .icon:hover {
@@ -350,9 +343,6 @@ button {
 	height : 100%;
 	width : 100%;
 	background-color : red;
-	position : absolute;
-	top : 0;
-	left : 0;
 	opacity : 0.3;
 }
 
@@ -397,8 +387,9 @@ button {
 }
 
 .confirm-btn, .back-btn, .first-move-btn {
+	box-sizing : border-box;
+	width : 90%;
  	height : 15%;
- 	margin-top : 17px;
  	background-color : #7BE0AD;
  	border : none;
  	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
@@ -414,17 +405,14 @@ button {
 
 .computer-btn-div {
 	height : 15%;
-	margin-top : 17px;
 }
 
 .computer.confirm-btn {
-	margin-top : 0;
 	height : 100%;
 	width : 73%;
 }
 
 .back-btn {
-	margin-top : 0;
 	height : 100%;
 	width : 25%;
 	background-color : #F9AB55;
@@ -445,6 +433,7 @@ button {
 	position : absolute;
 	top : 10%;
 	left : 0;
+	background-color : #EBF5DF;
 }
 
 .icon-select-btn-div {
@@ -581,6 +570,7 @@ button {
 	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
 	font-size : 35px;
 	display : none;
+	color : #fff;
 }
 
 .first-move-div {
@@ -679,6 +669,12 @@ button {
 	}
 }
 
+@media (min-aspect-ratio : 17/10) {
+	.canvas-inner {
+		width : 100%;
+	}
+}
+
 @media (min-width : 635px) {
 
 	.icon {
@@ -696,100 +692,77 @@ button {
 
 @media (orientation : landscape) {
 
-	.heading {
-		margin : 10px;
-		font-size : calc(17px + (20 * (100vh - 320px) / 880));
-	}
-
-	.flip-container {
-		height : calc(95% - 30px);
-	}
-
-	.flipper {
-		height : 100%;
+	.sub-heading {
+		display : inline-block;
+		width: 100%;
 	}
 
 
-	.icon-select-outer {
-		max-height : calc(320px + (280 * (100vw - 480px) / 320));
-		max-width : calc(480px + (320 * (100vh - 320px) / 315));
-		margin : 0 10px 10px;
-		width : calc(100% - 20px);
-	}
-
-	.user.icon-select-outer, .computer.icon-select-outer {
+	.user.icon-select-wrapper, .computer.icon-select-wrapper {
 		backface-visibility: hidden;
 		position: absolute;
 		top: 50%;
 		left: 50%;
 	}
 
-	.user.icon-select-outer {
+	.user.icon-select-wrapper {
 		z-index: 2;
-		transform: rotateY(0deg) translate(calc(-50% - 10px), -50%);
+		transform: rotateY(0deg) translate(calc(-50%), -50%);
 	}
 
-	.computer.icon-select-outer {
-		transform: rotateY(180deg) translate(calc(50% + 10px), -50%);
+	.computer.icon-select-wrapper {
+		transform: rotateY(180deg) translate(calc(50%), -50%);
 	}
 
-	.icon-select-inner {
+	.icon-select {
+		height: calc(100% - 2.5vh);
+		width : 95vw;
+		margin : 0 2.5% 2.5%;
 		flex-flow : row wrap;
-		justify-content : center;
-		align-items : flex-start;
-		margin : 0 17px 0;
-		height : 100%;
-		align-content : stretch;
 	}
-
-	.select-text {
-		display : flex;
-		flex-direction : column;
-		justify-content: center;
-		text-align : center;
-		height : 7.5%;
-		width : 100%;
-		font-size : 20px;
-		color: #F5FAF0;
-		font-weight : 300;
-		align-self : center;
-}
 
 	.icon-preview {
-		width : 75%;
+		width : 60%;
 		height : 70%;
 		margin : 0;
 	}
 
 	.icon-showcase {
-		min-width : 43px;
- 		max-width : 10.09%;
- 		height : 70%;
- 		flex-flow : column nowrap;
- 		min-height : initial;
- 		max-height : initial;
- 		margin : 0;
- 		margin-left : 2%;
- 		width : auto;
- 		justify-content : space-between;
+		width : 30%;
+		height : 70%;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: repeat(4, 1fr);
+		grid-gap : 2%;
+		justify-items : center;
 	}
+
+	.icon {
+		background-color : pink;
+		width  :50px;
+		height : 100%;
+		transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    	background-size : 100% 100%;
+    	cursor : pointer;
+ 		background-image : #fff;
+}
 
 	.computer-btn-div {
 		height : 10%;
-		margin-top : 0;
+		margin: 0 1% 2vh 0;
 		width : 100%;
 	}
 
 
 	.confirm-btn, .back-btn {
  		height : 10%;
- 		margin : 0;
- 		width  : 100%;
+ 		margin: 0 1% 2vh 0;
+ 		width  : 93%;
  	}
 
  	.computer.confirm-btn {
 		height : 100%;
-		width : 73%;
+		width : 67.5%;
 	}
 
 	.back-btn {
@@ -797,17 +770,6 @@ button {
 		height : 100%;
 		width : 25%;
 		background-color : #F9AB55;
-	}
-
-	.icon {
-		flex : 1 1 20%;
- 		min-height : 0;
- 		max-height : 25%;
- 		min-width : 0;
- 		width : calc(43px + (39 * (100vh - 320px) / 330));
- 		max-width : 100%;
- 		margin : 2% 0;
-
 	}
 
 	.left-edge {
@@ -851,27 +813,31 @@ button {
 	}
 
 	.game-outer {
-		height : 65vh;
-		max-height : 75vw;
-		width : 65vh;
-		max-width : 75vw;
-	}
+		position : relative;
+		display : flex;
+		flex-flow : row wrap;
+		border  : none;
+		width : 80%;
+		max-width: 65vh;
+		height : 80vw;
+		max-height : 65vh;
+		margin-bottom : 20px;
+}
 
 	.first-move-text {
 		height : 40%;
 		margin : 10px auto 0;
 	}
 
-}
-
-@media (orientation : landscape) and (min-height : 635px) {
-
-	.icon-select-outer {
-		max-height : 600px;
-		max-width : 800px;
+	.first-move-btn {
+		height : 60%;
+		width  : 45%;
+		margin-top : 0;
+		font-size : calc(13px + (5 * (100vw - 320px) / 880));
 	}
 
 }
+
 
 @keyframes btnMerge {
 	
