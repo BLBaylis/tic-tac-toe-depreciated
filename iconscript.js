@@ -472,6 +472,8 @@ function lineLength1Checker(arr) {
 		if (arr[i] === "user"){
 			lineLength++;
 			square = workOutGridNumberFromEdgeIndex(arr, i);
+		} else if (arr[i] === "computer") {
+			return true;
 		}
 	}
 	if (lineLength === 1){
