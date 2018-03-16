@@ -60,10 +60,11 @@ body, html {
 	display : flex;
 	flex-direction : column;
 	justify-content : center;
-	height : 10%;
-	background-color : #EBF5DF;
+	height : 7.5%;
+	background-color : #889B7C;
 	text-align: center;
-	color : #889B7C;
+	color : #EBF5DF;
+	font-size : calc(17px + (12 * (100vh - 320px) / 880));
 }
 
 h2 {
@@ -88,7 +89,7 @@ button {
 }
 
 .flip-container {
-	height : 90%;
+	height : 92.5%;
 	perspective: 1500px;
 	position : relative;
 	z-index : 5;
@@ -149,8 +150,8 @@ button {
 	width : 90vw;
 	margin : 0 auto;
 	text-align: center;
-	max-width : 288px;
-	max-height : 480px;
+	max-width : 380px;
+	max-height : 680px;
 	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
 }
 
@@ -641,6 +642,10 @@ button {
 
 @media (orientation : landscape) {
 
+	.flip-container {
+		top : 1%;
+	}
+
 	.sub-heading {
 		display : inline-block;
 		width: 100%;
@@ -667,8 +672,8 @@ button {
 		width : 95vw;
 		margin-bottom : 2.5%;
 		flex-flow : row wrap;
-		max-width : 480px;
-		max-height : 288px;		
+		max-height: 380px;
+		max-width : 680px;		
 	}
 
 	.icon-preview {
@@ -688,14 +693,14 @@ button {
 
 	.icon {
 		background-color : pink;
-		width  : 90%;
+		width  : 75%;
 		height : 100%;
 		transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
     	background-size : 100% 100%;
     	cursor : pointer;
  		background-image : #fff;
-}
+	}
 
 	.computer-btn-div {
 		height : 10%;
@@ -738,19 +743,19 @@ button {
 
 	.icon-select-btn-div {
 		position : absolute;
-		top : calc(135px + (170 * (100vh - 320px)) / 315);
+		top : calc(135px + (135 * (100vh - 320px)) / 280);
 		min-height : 0;
-		height: 66px;
+		height: calc(66px + (34 * (100vh - 320px)) / 280);
 		width : 92.5%;
 		max-width : 92.5%;
 		display: flex;
 		flex-flow: row nowrap;
-		justify-content : space-around;
+		justify-content : space-between;
 		align-items : center;
 	}
 
 	.open-icon-select-btn {
-		width : 66px;
+		width : calc(66px + (34 * (100vh - 320px)) / 280);
 	}
 
 	.game-control-div {
@@ -795,7 +800,25 @@ button {
 
 	.icon-select {
 		max-height : 904px;
-		max-width : 681px;
+		max-width : 600px;
+	}
+
+}
+
+@media (min-width : 1024px) and (min-height : 600px) {
+
+	.icon-select {
+		max-height : 450px;
+		max-width : 704px;
+	}
+
+	.icon-select-btn-div {
+		height: calc(100px + (50 * (100vh - 600px)) / 168);
+		top : calc(270px + (70 * (100vh - 600px)) / 168);
+	}
+
+	.open-icon-select-btn {
+		width : calc(100px + (50 * (100vh - 600px)) / 168);
 	}
 
 }
@@ -803,8 +826,17 @@ button {
 @media (min-width : 1024px) and (min-height : 768px) {
 
 	.icon-select {
-		max-height : 681px;
+		max-height : 600px;
 		max-width : 904px;
+	}
+
+	.icon-select-btn-div {
+		height: calc(150px + (100 * (100vh - 768px)) / 256);
+		top : calc(340px + (85 * (100vh - 768px)) / 256);
+	}
+
+	.open-icon-select-btn {
+		width : calc(150px + (100 * (100vh - 768px)) / 256);
 	}
 
 }
@@ -812,8 +844,34 @@ button {
 @media (min-width : 1366px) and (min-height : 1024px) {
 
 	.icon-select {
-		max-height : 904px;
+		max-height : 800px;
 		max-width : 1200px;
+	}
+
+	.icon-select-btn-div {
+		height: 250px;
+		top : 425px;
+		justify-content: space-between;
+	}
+
+	.open-icon-select-btn {
+		width : 250px;
+	}
+
+}
+
+@media (min-width : 1200px) {
+
+	.heading {
+		font-size : 29px;
+	}
+
+	h2 {
+		font-size : 27px;
+	}
+
+	h3, button {
+		font-size : 20px;
 	}
 
 }
