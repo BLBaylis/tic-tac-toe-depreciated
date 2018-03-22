@@ -402,7 +402,7 @@ button {
  	cursor : pointer;
 }
 
-.confirm-btn {
+.user.confirm-btn {
 	cursor : not-allowed;
 }
 
@@ -453,6 +453,7 @@ button {
 }
 
 .open-icon-select-btn {
+	position: relative;
 	height : 100%;
 	width  : 11vh;
 	background-size : 100%, 100%;
@@ -465,6 +466,20 @@ button {
 
 .open-icon-select-btn:hover {
 	box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
+}
+
+.open-icon-select-btn::after {
+	content : "1st";
+	position: absolute;
+	top : -40%;
+	left : 0;
+	width  :100%;
+	font-family: "BioRhyme";
+	color : #889B7C;
+}
+
+#second::after {
+	content : "2nd";
 }
 
 .vs {
@@ -520,11 +535,11 @@ button {
 	background-color : #F9AB55;
 	flex : 1 1 29%;
 	margin : 0 2px;
-	color : #F9AB55;
+	color : #fff;
 }
 
 .btn-flash {
-	animation : btnFlash 2s linear 0s 1 none;
+	animation : btnFlash 3s linear 0s 1 none;
 }
 
 .swap-btn:hover, .swap-btn:focus, .back-btn:hover, .back-btn:focus {
@@ -691,7 +706,6 @@ button {
 	}
 
 	.icon {
-		background-color : pink;
 		width  : 75%;
 		height : 100%;
 		transition: all 0.3s cubic-bezier(.25,.8,.25,1);
@@ -860,6 +874,10 @@ button {
 		width : calc(150px + (100 * (100vh - 768px)) / 256);
 	}
 
+	.open-icon-select-btn::after {
+		font-size : 25px;
+	}
+
 }
 
 @media (min-width : 1366px) and (min-height : 1024px) {
@@ -902,24 +920,18 @@ button {
 
 	}
 
-	99.98% {
-		height : 5.4vh;
-		width : 15%;
-		left : 75%;
-		top : -23%;
-		box-shadow : none;
-		background-color : #F9AB55;
-		z-index : 0;
+	50% {
+
+	}
+
+	99.99% {
+		transform: scale(1);
 	}
 
 	100% {
-		height : 5.4vh;
-		width : 15%;
-		left : 75%;
-		top : -23%;
 		box-shadow : none;
 		background-color: transparent;
-		z-index : -10;
+		transform: scale(0);
 	}
 
 }
@@ -927,38 +939,31 @@ button {
 @keyframes btnFlash {
 
 	0% {
-		background-color : #F9AB55;
-		color :  #F9AB55;
+		background-color : #fff;
 	}
 
-	50%{
-		background-color : #F9AB55;
-		color :  #F9AB55;
+	33%{
+		background-color : #fff;
 	}
 
-	60%{
+	66%{
 		background-color : #F9AB55;
-		color :  #fff;
 	}
 
-	70% {
+	74% {
 		background-color : #FAC183;
-		color :  #fff;
 	}
 
-	80% {
+	82% {
 		background-color : #F9AB55;
-		color :  #fff;
 	}
 
 	90% {
 		background-color : #FAC183;
-		color :  #fff;
 	}
 
 	100% {
 		background-color : #F9AB55;
-		color :  #fff;
 	}
 
 }

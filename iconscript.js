@@ -1,178 +1,165 @@
 document.addEventListener("DOMContentLoaded", function() {
-	document.getElementsByClassName("swap-btn")[0].style.color = "#F9AB55";
-	document.getElementsByClassName("confirm-btn")[0].addEventListener("click", function(event){
-		console.log(event);
-		document.getElementsByClassName("flipper")[0].style.transition = "0.6s";
+	swapBtn[0].style.backgroundColor = "#fff";
+	confirmBtn[0].addEventListener("click", function(event){
+		flipper[0].style.transition = "0.6s";
 		flip();
 		userIcon.updateIcon("user-square");
-		if (gameObj.firstMove === "user"){
-			document.getElementsByClassName("open-icon-select-btn")[0].style.backgroundImage = 
-			"url('icons/" + userIcon.icon + "/" + userIcon.icon + " " + userIcon.colour + ".png')";
-		} else {
-			document.getElementsByClassName("open-icon-select-btn")[1].style.backgroundImage = 
-			"url('icons/" + userIcon.icon + "/" + userIcon.icon + " " + userIcon.colour + ".png')";
-		}
+		var index = gameObj.firstMove === "user" ? 0 : 1;
+		openIconSelectBtnBackgroundUpdater(index, userIcon);
 	});
-	document.getElementsByClassName("confirm-btn")[1].addEventListener("click", function() {
-		var confirmBtn = document.getElementsByClassName("confirm-btn");
+	confirmBtn[1].addEventListener("click", function() {
 		document.getElementsByClassName("game-wrapper")[0].classList.remove("hidden");
-		document.getElementsByClassName("flip-container")[0].classList.add("remove-icon-select");
+		flipContainer[0].classList.add("remove-icon-select");
 		computerIcon.updateIcon("computer-square");
-		if (gameObj.firstMove === "user"){
-			document.getElementsByClassName("open-icon-select-btn")[1].style.backgroundImage = 
-			"url('icons/" + computerIcon.icon + "/" + computerIcon.icon + " " + computerIcon.colour + ".png')";
-		} else {	
-			document.getElementsByClassName("open-icon-select-btn")[0].style.backgroundImage = 
-			"url('icons/" + computerIcon.icon + "/" + computerIcon.icon + " " + computerIcon.colour + ".png')";
-		}
+		var index = gameObj.firstMove === "computer" ? 0 : 1;
+  		openIconSelectBtnBackgroundUpdater(index, computerIcon);
 	});
-	document.getElementsByClassName("open-icon-select-btn")[0].addEventListener("click", function() {
-		if (flipped && gameObj.firstMove === "user"){
-			document.getElementsByClassName("flipper")[0].style.transition = "0s";
-			flip();
-		} else if (!flipped && gameObj.firstMove === "computer"){
-			document.getElementsByClassName("flipper")[0].style.transition = "0s";
-			flip();
-		}
-		document.getElementsByClassName("flip-container")[0].classList.remove("remove-icon-select");
-	});
-	document.getElementsByClassName("open-icon-select-btn")[1].addEventListener("click", function() {
-		if (!flipped && gameObj.firstMove === "user"){
-			document.getElementsByClassName("flipper")[0].style.transition = "0s";
-			flip();
-		} else if (flipped && gameObj.firstMove === "computer"){
-			document.getElementsByClassName("flipper")[0].style.transition = "0s";
-			flip();
-		}
-		document.getElementsByClassName("flip-container")[0].classList.remove("remove-icon-select");
-	});
-	document.getElementsByClassName("first-move-btn")[0].addEventListener("click", function() {
-		document.getElementsByClassName("open-icon-select-btn")[0].style.backgroundImage
-		= "url('icons/" + userIcon.icon + "/" + userIcon.icon + " " + userIcon.colour + ".png')";
-		document.getElementsByClassName("open-icon-select-btn")[1].style.backgroundImage
-		 = "url('icons/" + computerIcon.icon + "/" + computerIcon.icon + " " + computerIcon.colour + ".png')";
-		document.getElementsByClassName("first-move-div")[0].classList.add("remove-first-move-div");
-		document.getElementsByClassName("swap-btn")[0].classList.add("btn-flash");
-		document.getElementsByClassName("first-move-div")[0].innerHTML = "";
-		setInterval(function(){
-			document.getElementsByClassName("swap-btn")[0].style.color = "#fff";
-		}, 1000);
-		for (var i = 0; i < document.getElementsByClassName("inner-square").length; i++){
-			document.getElementsByClassName("inner-square")[i].classList.remove("selected");
-		}
-		document.getElementsByClassName("rematch-btn")[0].classList.remove("selected");
-		document.getElementsByClassName("swap-btn")[0].classList.remove("selected");
-	});
-	document.getElementsByClassName("first-move-btn")[1].addEventListener("click", function() {
-		swap();
-		document.getElementsByClassName("open-icon-select-btn")[1].style.backgroundImage
-		= "url('icons/" + userIcon.icon + "/" + userIcon.icon + " " + userIcon.colour + ".png')";
-		document.getElementsByClassName("open-icon-select-btn")[0].style.backgroundImage
-		= "url('icons/" + computerIcon.icon + "/" + computerIcon.icon + " " + computerIcon.colour + ".png')";
-		document.getElementsByClassName("first-move-div")[0].classList.add("remove-first-move-div");
-		document.getElementsByClassName("swap-btn")[0].classList.add("btn-flash");
-		document.getElementsByClassName("first-move-div")[0].innerHTML = "";
-		setInterval(function(){
-			document.getElementsByClassName("swap-btn")[0].style.color = "#fff";
-		}, 1000);
-		for (var i = 0; i < document.getElementsByClassName("inner-square").length; i++){
-			document.getElementsByClassName("inner-square")[i].classList.remove("selected");
-		}
-		document.getElementsByClassName("rematch-btn")[0].classList.remove("selected");
-		document.getElementsByClassName("swap-btn")[0].classList.remove("selected");
-	});
+	for (var j = 0; j < openIconSelectBtn.length; j++){
+		openIconSelectBtn[j].addEventListener("click", function() {
+			flipAnimationTransitionChanger();
+			flipContainer[0].classList.remove("remove-icon-select");
+		});
+	}
+	for (var k = 0; k < firstMoveBtn.length; k++){
+		firstMoveBtn[k].addEventListener("click", function() {
+			if (k === 2){
+				swap();
+			}
+			firstMoveDivRemovalAnimations();
+		});
+	}
 	document.getElementsByClassName("back-btn")[0].addEventListener("click", flip);
-	for (var i = 0; i < document.getElementsByClassName("icon").length; i++){
-		document.getElementsByClassName("icon")[i].addEventListener("click", function(event){
-			console.log("fired");
-			var confirmBtn = document.getElementsByClassName("confirm-btn");
+	for (var i = 0; i < iconElement.length; i++){
+		iconElement[i].addEventListener("click", function(event){
 			if (event.target.classList.contains("user")) {
-				confirmBtn[0].disabled = false;
-				confirmBtn[0].style.cursor = "pointer";
+				confirmBtnDisableToggle(0, false);
 			} else if (event.target.classList.contains("computer")) {
-				confirmBtn[1].disabled = false;
-				confirmBtn[1].style.cursor = "pointer";
+				confirmBtnDisableToggle(1, false);
 			}
 			iconSelect(event);
 		});
 	}
-	for (var i = 0; i < document.getElementsByClassName("colour").length; i++){
-		document.getElementsByClassName("colour")[i].addEventListener("click", colourSelect);
+	for (var i = 0; i < colour.length; i++){
+		colour[i].addEventListener("click", colourSelect);
 	}
 	for (var i = 0; i < innerSquare.length; i++){
 		innerSquare[i].addEventListener("click", userMove);
 	}
-	document.getElementsByClassName("rematch-btn")[0].addEventListener("click", restartGame);
-	document.getElementsByClassName("swap-btn")[0].addEventListener("click", swap);
+	rematchBtn[0].addEventListener("click", restartGame);
+	swapBtn[0].addEventListener("click", swap);
 });
 
 var userIcon = {colour : "dark-green", icon : "circle", iconClass : "nought", updateIcon : function(element){
-	console.log("userIcon refreshed");
-	for (var i = 0; i < document.getElementsByClassName(element).length; i++){
-		document.getElementsByClassName(element)[i].style.backgroundImage = "url('icons/" + userIcon.icon + "/" + userIcon.icon 
+	var element = document.getElementsByClassName(element);
+	for (var i = 0; i < element.length; i++){
+		element[i].style.backgroundImage = "url('icons/" + userIcon.icon + "/" + userIcon.icon 
 		+ " " + userIcon.colour + ".png')";
 	}
 }, compatibilityCheck : function(){
 	var text;
 	if (userIcon.colour === "white") {
 		if (userIcon.icon === "circle" || userIcon.icon === "cross" || userIcon.icon === "wheel" || userIcon.icon === "candy-cane"){
-			document.getElementsByClassName("confirm-btn")[0].disabled = true;
-			document.getElementsByClassName("confirm-btn")[0].style.cursor = "not-allowed";
+			confirmBtnDisableToggle(0, true);
 			return false;
 		} else if (userIcon.colour === "black" && userIcon.icon === "pencils"){
-			document.getElementsByClassName("confirm-btn")[0].disabled = true;
-			document.getElementsByClassName("confirm-btn")[0].style.cursor = "not-allowed";
+			confirmBtnDisableToggle(0, true);
 			return false;
 		}
 	}
 	return true;
 }},
 computerIcon = {colour : "light-red", icon : "cross", iconClass : "not-nought", updateIcon : function(element){
-	console.log("computerIcon refreshed");
-	for (var i = 0; i < document.getElementsByClassName(element).length; i++){
-		document.getElementsByClassName(element)[i].style.backgroundImage = "url('icons/" + computerIcon.icon + "/" + computerIcon.icon 
+	var element = document.getElementsByClassName(element);
+	for (var i = 0; i < element.length; i++){
+		element[i].style.backgroundImage = "url('icons/" + computerIcon.icon + "/" + computerIcon.icon 
 		+ " " + computerIcon.colour + ".png')";
 	}
 }, compatibilityCheck : function(){
 	if (computerIcon.colour === "white") {
 		if (computerIcon.icon === "circle" || computerIcon.icon === "cross" || computerIcon.icon === "wheel"
 		 || computerIcon.icon === "candy-cane"){
-			document.getElementsByClassName("confirm-btn")[1].disabled = true;
-			document.getElementsByClassName("confirm-btn")[1].style.cursor = "not-allowed";
+			confirmBtnDisableToggle(1, true);
 			return false;
 		}
 	} else if (computerIcon.colour === "black" && computerIcon.icon === "pencils"){
-			document.getElementsByClassName("confirm-btn")[1].disabled = true;
-			document.getElementsByClassName("confirm-btn")[1].style.cursor = "not-allowed";
+			confirmBtnDisableToggle(1, true);
 			return false;
 	}
 	return true;
 }},
 flipped = false,
 innerSquare = document.getElementsByClassName("inner-square"),
-gameObj = {center : "", moves : 0, grid : [0, 1, 2, 3, 4, 5 , 6, 7, 8], outcome : "", firstMove : "user"};
+gameObj = {center : "", moves : 0, grid : [0, 1, 2, 3, 4, 5 , 6, 7, 8], outcome : "", firstMove : "user"},
+swapBtn = document.getElementsByClassName("swap-btn"),
+confirmBtn = document.getElementsByClassName("confirm-btn"),
+openIconSelectBtn = document.getElementsByClassName("open-icon-select-btn"),
+flipContainer = document.getElementsByClassName("flip-container"),
+flipper = document.getElementsByClassName("flipper"),
+firstMoveBtn = document.getElementsByClassName("first-move-btn"),
+firstMoveDiv = document.getElementsByClassName("first-move-div"),
+rematchBtn = document.getElementsByClassName("rematch-btn"),
+iconElement = document.getElementsByClassName("icon"),
+colour = document.getElementsByClassName("colour"),
+userCanvasInner = document.getElementsByClassName("user-canvas-inner"),
+computerCanvasInner = document.getElementsByClassName("computer-canvas-inner"),
+endGame = document.getElementsByClassName("end-game");
 
 function flip() {
   if (!flipped){
-    document.getElementsByClassName("flipper")[0].classList.add("go-flip");
+    flipper[0].classList.add("go-flip");
   } else if (flipped) {
-    document.getElementsByClassName("flipper")[0].classList.remove("go-flip");
+    flipper[0].classList.remove("go-flip");
   }
   flipped = !flipped;
 }
 
+function flipAnimationTransitionChanger(){
+	if (flipped && gameObj.firstMove === "user"){
+		flipper[0].style.transition = "0s";
+		flip();
+	} else if (!flipped && gameObj.firstMove === "computer"){
+		flipper[0].style.transition = "0s";
+		flip();
+	}
+}
+
+function openIconSelectBtnBackgroundUpdater(index, whichPlayerObj) {
+	openIconSelectBtn[index].style.backgroundImage = 
+    	"url('icons/" + whichPlayerObj.icon + "/" + whichPlayerObj.icon + " " + whichPlayerObj.colour + ".png')";
+}
+
+function confirmBtnDisableToggle(index, ifDisableThenTrue) {
+	confirmBtn[index].disabled = ifDisableThenTrue;
+	if (ifDisableThenTrue){
+		confirmBtn[index].style.cursor = "not-allowed";
+	} else {
+		confirmBtn[index].style.cursor = "pointer";
+	}
+}
+
 function swap(){
-	console.log("swap");
-	var bgImage1 = document.getElementsByClassName("open-icon-select-btn")[0].style.backgroundImage;
-	document.getElementsByClassName("open-icon-select-btn")[0].style.backgroundImage = 
-	document.getElementsByClassName("open-icon-select-btn")[1].style.backgroundImage;
-	document.getElementsByClassName("open-icon-select-btn")[1].style.backgroundImage = bgImage1;
 	if (gameObj.firstMove === "user"){
+		openIconSelectBtnBackgroundUpdater(0, computerIcon);
+		openIconSelectBtnBackgroundUpdater(1, userIcon);
 		gameObj.firstMove = "computer";
 	} else {
 		gameObj.firstMove = "user";
+		openIconSelectBtnBackgroundUpdater(0, userIcon);
+		openIconSelectBtnBackgroundUpdater(1, computerIcon);
 	}
 	restartGame();
+}
+
+function firstMoveDivRemovalAnimations() {
+	firstMoveDiv[0].classList.add("remove-first-move-div");
+	swapBtn[0].classList.add("btn-flash");
+	firstMoveDiv[0].innerHTML = "";
+	swapBtn[0].style.backgroundColor = "";
+	for (var i = 0; i < innerSquare.length; i++){
+		innerSquare[i].classList.remove("selected");
+	}
+	rematchBtn[0].classList.remove("selected");
+	swapBtn[0].classList.remove("selected");
 }
 
 function iconSelect(event){
@@ -183,10 +170,10 @@ function iconSelect(event){
 		userIcon.icon = event.target.classList[2];
 		userIcon.updateIcon("user-canvas-inner");
 		if (!userIcon.compatibilityCheck()){
-			document.getElementsByClassName("user-canvas-inner")[0].classList.add("incompatible-icon");
+			userCanvasInner[0].classList.add("incompatible-icon");
 			return;
 		}
-		document.getElementsByClassName("user-canvas-inner")[0].classList.remove("incompatible-icon");
+		userCanvasInner[0].classList.remove("incompatible-icon");
 		if (event.target.classList.contains("nought")) {
 			userIcon.iconClass = "nought";
 			for (var i = 4; i < notNoughts.length; i++) {
@@ -204,10 +191,10 @@ function iconSelect(event){
 		computerIcon.icon = event.target.classList[2];
 		computerIcon.updateIcon("computer-canvas-inner");
 		if (!computerIcon.compatibilityCheck()){
-			document.getElementsByClassName("computer-canvas-inner")[0].classList.add("incompatible-icon");
+			computerCanvasInner[0].classList.add("incompatible-icon");
 			return;
 		}
-		document.getElementsByClassName("computer-canvas-inner")[0].classList.remove("incompatible-icon");
+		computerCanvasInner[0].classList.remove("incompatible-icon");
 		if (event.target.classList.contains("nought")) {
 			computerIcon.iconClass = "nought";
 		} else if (event.target.classList.contains("not-nought")) {
@@ -231,67 +218,85 @@ function iconSelect(event){
 
 function colourSelect(event){
 	var whichPlayer = event.target.classList[0];
-	console.log(whichPlayer);
 	if (whichPlayer === "user"){
 		userIcon.colour = event.target.classList[2];
 		userIcon.updateIcon("user-canvas-inner");
 		if (!userIcon.compatibilityCheck()){
-			document.getElementsByClassName("user-canvas-inner")[0].classList.add("incompatible-icon");
+			userCanvasInner[0].classList.add("incompatible-icon");
 			return;
 		}
-		document.getElementsByClassName("user-canvas-inner")[0].classList.remove("incompatible-icon");
+		userCanvasInner[0].classList.remove("incompatible-icon");
 	} else if (whichPlayer === "computer"){
 		computerIcon.colour = event.target.classList[2];
 		computerIcon.updateIcon("computer-canvas-inner");
-		console.log(computerIcon.compatibilityCheck());
 		if (!computerIcon.compatibilityCheck()){
 			console.log("not compatible");
-			document.getElementsByClassName("computer-canvas-inner")[0].classList.add("incompatible-icon");
+			computerCanvasInner[0].classList.add("incompatible-icon");
 			return;
 		}
-		document.getElementsByClassName("computer-canvas-inner")[0].classList.remove("incompatible-icon");
+		computerCanvasInner[0].classList.remove("incompatible-icon");
 	}
 }
 
 function restartGame() {
-	for (var i = 0; i < document.getElementsByClassName("inner-square").length; i++){
-		document.getElementsByClassName("inner-square")[i].classList.remove("selected");
-		document.getElementsByClassName("inner-square")[i].classList.remove("user-square");
-		document.getElementsByClassName("inner-square")[i].classList.remove("computer-square");
-		document.getElementsByClassName("inner-square")[i].style.backgroundImage = "";
+	for (var i = 0; i < innerSquare.length; i++){
+		innerSquare[i].classList.remove("selected");
+		innerSquare[i].classList.remove("user-square");
+		innerSquare[i].classList.remove("computer-square");
+		innerSquare[i].style.backgroundImage = "";
 	}
 	if (gameObj.outcome !== ""){
-		document.getElementsByClassName("end-game")[0].classList.remove(gameObj.outcome);
+		endGame[0].classList.remove(gameObj.outcome);
 	}
 	gameObj = {center : "", moves : 0, grid : [0, 1, 2, 3, 4, 5 , 6, 7, 8], outcome : "", firstMove : gameObj.firstMove};
 	if (gameObj.firstMove === "computer" && gameObj.moves === 0){
 		chooseRandomMoveFromGivenArray("computer", gameObj.grid, false);
 		gameObj.moves++;
 	}
-
 }
 
 function makeMove(whichPlayer, gridNumber){
+
+	function repatedMakeMoveCode() {
+		innerSquare[gridNumber].classList.add(whichPlayer + "-square");
+		grid[gridNumber] = whichPlayer;
+		lastMove = gridNumber;
+	}
+
 	var grid = gameObj.grid;
 	if (whichPlayer === "computer"){
-		document.getElementsByClassName("inner-square")[gridNumber].classList.add("computer-square");
-		document.getElementsByClassName("inner-square")[gridNumber].style.backgroundImage = "url('icons/"
+		innerSquare[gridNumber].style.backgroundImage = "url('icons/"
 		 + computerIcon.icon + "/" + computerIcon.icon 
 		+ " " + computerIcon.colour + ".png')";
-		grid[gridNumber] = whichPlayer;
-		lastMove = gridNumber;
+		repatedMakeMoveCode();
 		return true;
 	} else if (whichPlayer === "user"){
-		document.getElementsByClassName("inner-square")[gridNumber].classList.add("user-square");
-		document.getElementsByClassName("inner-square")[gridNumber].style.backgroundImage = "url('icons/"
+		innerSquare[gridNumber].style.backgroundImage = "url('icons/"
 		 + userIcon.icon + "/" + userIcon.icon 
 		+ " " + userIcon.colour + ".png')";
-		grid[gridNumber] = whichPlayer;
-		lastMove = gridNumber;
+		repatedMakeMoveCode();
 		return true;
 	} else {
 		return false;
 	}	
+}
+
+function checkForGameEndingConditions(whichPlayer){
+		if (winChecker(whichPlayer)){
+		for (i = 0; i < innerSquare.length; i++){
+			innerSquare[i].classList.add("selected");
+		}
+		endGame[0].classList.add(gameObj.outcome);
+		return;
+	}
+	if (gameObj.moves === 9){
+		gameObj.outcome = "draw";
+		for (i = 0; i < innerSquare.length; i++){
+			innerSquare[i].classList.add("selected");
+		}
+		endGame[0].classList.add(gameObj.outcome);
+		return;
+	}
 }
 
 function userMove(event){
@@ -299,36 +304,12 @@ function userMove(event){
 	gridNumber = Number(eventTarget.classList[1]);
 	makeMove("user", gridNumber);
 	gameObj.moves++;
-	if (winChecker("user")){
-		for (i = 0; i < document.getElementsByClassName("inner-square").length; i++){
-			document.getElementsByClassName("inner-square")[i].classList.add("selected");
-		}
-		document.getElementsByClassName("end-game")[0].classList.add(gameObj.outcome);
-		return;
-	}
-	if (gameObj.moves === 9){
-		gameObj.outcome = "draw";
-		for (i = 0; i < document.getElementsByClassName("inner-square").length; i++){
-			document.getElementsByClassName("inner-square")[i].classList.add("selected");
-		}
-		document.getElementsByClassName("end-game")[0].classList.add(gameObj.outcome);
+	if (checkForGameEndingConditions("user")){
 		return;
 	}
 	computerMove();
 	gameObj.moves++;
-	if (winChecker("computer")){
-		for (var i = 0; i < document.getElementsByClassName("inner-square").length; i++){
-			document.getElementsByClassName("inner-square")[i].classList.add("selected");
-		}
-		document.getElementsByClassName("end-game")[0].classList.add(gameObj.outcome);
-		return;
-	}
-	if (gameObj.moves === 9){
-		gameObj.outcome = "draw";
-		for (i = 0; i < document.getElementsByClassName("inner-square").length; i++){
-			document.getElementsByClassName("inner-square")[i].classList.add("selected");
-		}
-		document.getElementsByClassName("end-game")[0].classList.add(gameObj.outcome);
+	if (checkForGameEndingConditions("computer")){
 		return;
 	}
 }
